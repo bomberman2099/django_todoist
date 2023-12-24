@@ -6,11 +6,14 @@ from todolist_app.models import TodoList
 
 class TodoListView(View):
     def get(self, request):
-        return render(request, 'index.html')
+        todolist = TodoList.objects.all()
+
+        return render(request, 'index.html', context={'todolist': todolist})
 
     def post(self, request):
         form = request.POST.get('form')
         if form:
-            todolist = TodoList.objects.create(TodoItem=form)
+            todolist = TodoList.objects.create(TodoItem=form, status=False)
             todolist.save()
-        return render(request, 'index.html')
+        todolist = TodoList.objects.all()
+        return render(request, 'index.html', {'todolist': todolist})
