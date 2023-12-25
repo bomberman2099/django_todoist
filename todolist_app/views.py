@@ -24,3 +24,9 @@ def DeleteTodo(request, pk):
     return redirect(reverse('home'))
 
 
+def FinishTodo(request, pk):
+    t = TodoList.objects.get(id=pk)
+    t.status = True
+    t.save()
+    return redirect(reverse('home'))
+
