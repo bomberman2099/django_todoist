@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from django.views import View
 
 from todolist_app.models import TodoList
@@ -17,3 +17,10 @@ class TodoListView(View):
             todolist.save()
         todolist = TodoList.objects.all()
         return render(request, 'index.html', {'todolist': todolist})
+
+def DeleteTodo(request, pk):
+    t = TodoList.objects.get(id=pk)
+    t.delete()
+    return redirect(reverse('home'))
+
+

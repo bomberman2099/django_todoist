@@ -48,8 +48,8 @@
                         <td>finished</td>
                     {% endif %}
                   <td>
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                    <button type="submit" class="btn btn-success ms-1">Finished</button>
+                    <a href="{% url 'delete' todo.id  %} " type="submit" class="btn btn-danger">Delete</a>
+                    <a type="submit" class="btn btn-success ms-1">Finished</a>
                   </td>
                 </tr>
               {% endfor %}
