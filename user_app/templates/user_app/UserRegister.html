@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Registration or Sign Up form in HTML CSS | CodingLab </title>
+    <link rel="stylesheet" href="{% static 'css/css3.css' %}">
+   </head>
+<body>
+  <div class="wrapper">
+    <h2>Registration</h2>
+    <form method="post">
+        {% csrf_token %}
+{{ form.username.errors }}
+      <div class="input-box">
+
+          {{ form.username }}
+
+      </div>
+        {{ form.Email.errors }}
+      <div class="input-box">
+        {{ form.Email }}
+      </div>
+        {{ form.password.errors }}
+      <div class="input-box">
+        {{ form.password }}
+      </div>
+        {{ form.password2.errors }}
+      <div class="input-box">
+        {{ form.password2 }}
+      </div>
+
+      <div class="policy">
+        <input type="checkbox">
+        <h3>I accept all terms & condition</h3>
+      </div>
+      <div class="input-box button">
+        <input type="submit" value="Register Now">
+      </div>
+      <div class="text">
+        <h3>Already have an account? <a href="{% url 'user:login' %}">Login now</a></h3>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

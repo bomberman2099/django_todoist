@@ -10,10 +10,8 @@
       <div class="col col-lg-9 col-xl-7">
         <div class="card rounded-3">
           <div class="card-body p-4">
-
             <h4 class="text-center my-3 pb-3">To Do App</h4>
-
-            <form method="post" action="{% url 'home' %}" class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
+            <form method="post" action="{% url 'home_app:home' %}" class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
                 {% csrf_token %}
               <div class="col-12">
                 <div class="form-outline">
@@ -21,13 +19,10 @@
                   <label class="form-label" for="form1">Enter a task here</label>
                 </div>
               </div>
-
               <div class="col-12">
                 <button type="submit" name="save" class="btn btn-primary">Save</button>
               </div>
-
             </form>
-
             <table class="table mb-4">
               <thead>
                 <tr>
@@ -48,14 +43,13 @@
                         <td>finished</td>
                     {% endif %}
                   <td>
-                    <a href="{% url 'delete' todo.id  %} " type="submit" class="btn btn-danger">Delete</a>
-                    <a href="{% url 'finishing' todo.id %}" type="submit" class="btn btn-success ms-1">Finished</a>
+                    <a href="{% url 'home_app:delete' todo.id  %} " type="submit" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'home_app:finishing' todo.id %}" type="submit" class="btn btn-success ms-1">Finished</a>
                   </td>
                 </tr>
               {% endfor %}
               </tbody>
             </table>
-
           </div>
         </div>
       </div>
