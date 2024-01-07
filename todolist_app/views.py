@@ -61,4 +61,3 @@ def UpdateTodoView(request, pk):
             t.save()
             return redirect(reverse('home_app:home'))
     return render(request, 'update_TodoItem.html', context={'form': form})
->>>>>>> e6bd649 (add update task)
