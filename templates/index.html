@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<section class="vh-100" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-9 col-xl-7">
+        <div class="card rounded-3">
+          <div class="card-body p-4">
+            <h4 class="text-center my-3 pb-3">To Do App</h4>
+            <form method="post" action="{% url 'home_app:home' %}" class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
+                {% csrf_token %}
+              <div class="col-12">
+                <div class="form-outline">
+                  <input type="text" name="form" id="form1" class="form-control" />
+                  <label class="form-label" for="form1">Enter a task here</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <button type="submit" name="save" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+            <table class="table mb-4">
+              <thead>
+                <tr>
+                  <th scope="col">No.</th>
+                  <th scope="col">Todo item</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for todo in todolist %}
+                <tr>
+                  <th scope="row">1</th>
+                  <td>{{ todo.TodoItem }}</td>
+                    {% if todo.status == False %}
+                    	<td>in progress</td>
+                        {% else%}
+                        <td>finished</td>
+                    {% endif %}
+                  <td>
+                    <a href="{% url 'home_app:delete' todo.id  %} " type="submit" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'home_app:finishing' todo.id %}" type="submit" class="btn btn-success ms-1">Finished</a>
+<<<<<<< HEAD
+=======
+                    <a href="{% url 'home_app:update' todo.id %}" type="submit" class="btn btn-success ms-1">Update</a>
+>>>>>>> e6bd649 (add update task)
+                  </td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
